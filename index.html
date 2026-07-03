@@ -2,277 +2,170 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>4TC Official Site | REAR MUSIC LABEL</title>
-  <meta name="description" content="REAR MUSIC LABELから起動するAIアーティスト4TC公式サイト。人工知能と喋れる、歌える、次世代AIアーティストプロジェクト。" />
-  <meta name="theme-color" content="#020414" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070816" />
+  <meta name="description" content="福山発・AIアーティスト 4TC 公式サイト。REAR MUSIC LABELによる、人工知能と話せる次世代アーティストプロジェクト。" />
+  <meta property="og:title" content="AI ARTIST 4TC OFFICIAL SITE" />
+  <meta property="og:description" content="福山発・AIアーティスト 4TC。声・音楽・会話・ライブ体験をつなぐ次世代プロジェクト。" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="4TC Official Site | REAR MUSIC LABEL" />
-  <meta property="og:description" content="人工知能が、歌いはじめる。福山初、AIアーティスト4TC起動。" />
-  <meta property="og:image" content="assets/4tc_stage.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="preload" as="image" href="assets/4tc_stage.png" />
-  <style>
-    :root{
-      --bg:#020414;
-      --ink:#f7fbff;
-      --muted:#a8b7d7;
-      --line:rgba(139,210,255,.28);
-      --panel:rgba(5,10,30,.74);
-      --panel2:rgba(9,15,40,.92);
-      --blue:#38c6ff;
-      --blue2:#1557ff;
-      --pink:#ff33d1;
-      --violet:#8a38ff;
-      --radius:30px;
-      --shadow:0 30px 90px rgba(0,0,0,.62);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 16% 12%, rgba(32,111,255,.42), transparent 30%),
-        radial-gradient(circle at 82% 28%, rgba(255,51,209,.18), transparent 34%),
-        radial-gradient(circle at 46% 110%, rgba(56,198,255,.22), transparent 34%),
-        #01020a;
-      overflow-x:hidden;
-    }
-    body:before{
-      content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
-      background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size:68px 68px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,.85), transparent 82%);
-    }
-    body:after{
-      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.36)), radial-gradient(circle at 50% 10%, transparent 0 40%, rgba(0,0,0,.22));
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%; display:block}
-    .nav{
-      position:fixed; top:0; left:0; right:0; z-index:40;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:16px clamp(18px,5vw,70px);
-      background:linear-gradient(180deg, rgba(1,2,10,.94), rgba(1,2,10,.18));
-      backdrop-filter:blur(18px);
-    }
-    .brand{display:flex; align-items:center; gap:12px; font-weight:950; letter-spacing:.16em; font-size:13px}
-    .mark{width:38px;height:38px;border-radius:50%; background:linear-gradient(135deg,#fff,#74d8ff 36%,#1359ff 68%,#ff33d1); box-shadow:0 0 28px rgba(56,198,255,.72)}
-    .navlinks{display:flex; gap:22px; color:var(--muted); font-size:12px; font-weight:800; letter-spacing:.14em}
-    .hero{min-height:100svh; position:relative; isolation:isolate; display:grid; align-items:end; padding:112px clamp(18px,5vw,70px) 54px}
-    .hero:before{content:""; position:absolute; inset:0; z-index:-2; background:linear-gradient(90deg,rgba(1,2,10,.95) 0%,rgba(1,2,10,.68) 34%,rgba(1,2,10,.16) 68%), url('assets/4tc_stage.png') center/cover no-repeat}
-    .hero:after{content:""; position:absolute; inset:auto 0 0 0; height:48%; z-index:-1; background:linear-gradient(0deg,#01020a 0%,transparent 100%)}
-    .hero-grid{width:100%; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr); gap:clamp(26px,5vw,78px); align-items:end}
-    .eyebrow{display:inline-flex; align-items:center; gap:10px; padding:9px 13px; border:1px solid var(--line); border-radius:999px; background:rgba(5,14,39,.58); color:#def8ff; font-size:12px; font-weight:950; letter-spacing:.15em; box-shadow:0 0 30px rgba(56,198,255,.18)}
-    .pulse{width:8px;height:8px;border-radius:50%;background:#52ffff; box-shadow:0 0 20px #52ffff; animation:pulse 1.45s infinite ease-in-out}
-    @keyframes pulse{50%{transform:scale(1.8);opacity:.55}}
-    h1{margin:18px 0 10px; font-size:clamp(76px,17vw,200px); line-height:.75; letter-spacing:-.09em; text-shadow:0 0 50px rgba(56,198,255,.34)}
-    .grad{background:linear-gradient(180deg,#fff 12%,#9ee9ff 38%,#1768ff 72%,#ff31c8 120%); -webkit-background-clip:text; background-clip:text; color:transparent}
-    .sub{margin:0 0 18px; max-width:940px; font-weight:950; font-size:clamp(22px,3.5vw,48px); line-height:1.08; letter-spacing:-.055em}
-    .lead{max-width:780px; color:var(--muted); font-size:clamp(14px,1.55vw,18px); line-height:1.95; margin:0}
-    .btns{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px}
-    .btn{border:1px solid var(--line); border-radius:999px; padding:15px 20px; background:rgba(255,255,255,.06); font-size:13px; font-weight:950; letter-spacing:.08em; display:inline-flex; align-items:center; gap:10px; transition:.25s}
-    .btn.primary{border-color:transparent; background:linear-gradient(90deg,var(--blue2),var(--violet),var(--pink)); box-shadow:0 18px 50px rgba(21,87,255,.36)}
-    .btn:hover{transform:translateY(-2px); filter:brightness(1.08)}
-    .card{background:linear-gradient(180deg,rgba(8,16,44,.90),rgba(6,7,22,.72)); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); backdrop-filter:blur(20px)}
-    .card img{border-radius:22px; border:1px solid rgba(255,255,255,.14)}
-    section{padding:74px clamp(18px,5vw,70px)}
-    .title{font-size:clamp(38px,7vw,92px); line-height:.88; letter-spacing:-.075em; margin:0 0 18px}
-    .copy{max-width:850px; color:var(--muted); line-height:1.95; font-size:16px}
-    .grid{display:grid; gap:22px}
-    .two{grid-template-columns:repeat(2,minmax(0,1fr)); align-items:center}
-    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .panel{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(20px,3vw,36px); box-shadow:var(--shadow); backdrop-filter:blur(16px); overflow:hidden}
-    .audio-panel{background:linear-gradient(135deg, rgba(13,31,84,.94), rgba(18,9,40,.88))}
-    .audio-head{display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:20px}
-    .song{display:flex; align-items:center; gap:16px}
-    .cover{width:94px; height:94px; object-fit:cover; border-radius:23px; box-shadow:0 16px 44px rgba(0,0,0,.45)}
-    .song h2{margin:0 0 6px; font-size:clamp(25px,3.5vw,50px); line-height:.95; letter-spacing:-.05em}
-    .song p{margin:0; color:var(--muted); line-height:1.6}
-    audio{width:100%; filter:drop-shadow(0 12px 26px rgba(0,0,0,.40))}
-    .bars{height:78px; display:flex; align-items:end; gap:7px; padding:12px 0; overflow:hidden}
-    .bar{flex:1; min-width:5px; border-radius:999px; background:linear-gradient(0deg,var(--blue2),var(--blue),#fff); opacity:.82; animation:bar 1.08s ease-in-out infinite; transform-origin:bottom; animation-play-state:paused}
-    .bar:nth-child(2n){animation-duration:.9s}.bar:nth-child(3n){animation-duration:1.42s}.bar:nth-child(4n){animation-duration:.72s}.bar:nth-child(5n){animation-duration:1.24s}
-    @keyframes bar{0%,100%{height:18%}50%{height:100%}}
-    .stat{border:1px solid var(--line); border-radius:22px; background:rgba(255,255,255,.045); padding:18px}
-    .stat b{display:block; font-size:29px; line-height:1; letter-spacing:-.055em; margin-bottom:6px}
-    .stat span{color:var(--muted); font-size:13px; line-height:1.65}
-    .bigcopy{font-size:clamp(32px,6.4vw,82px); line-height:.96; letter-spacing:-.075em; font-weight:1000; margin:18px 0}
-    .logoBox{background:#06102f; display:grid; place-items:center; padding:28px}
-    .tagrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
-    .tag{padding:10px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.045); color:#dbf7ff; font-size:12px; font-weight:850; letter-spacing:.08em}
-    .memberlist,.timeline{display:grid; gap:12px; margin-top:20px}
-    .member,.cut{display:grid; gap:12px; border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.045); padding:16px}
-    .member{grid-template-columns:70px 1fr; align-items:center}
-    .member b{font-size:24px}.member span,.cut span{color:var(--muted); line-height:1.7}
-    .cut{grid-template-columns:90px 1fr; align-items:start}
-    .time{font-weight:950; color:#dbfbff; letter-spacing:.08em}
-    .cta{background:linear-gradient(135deg,rgba(21,87,255,.28),rgba(255,51,209,.16)),var(--panel2); text-align:center}
-    .footer{border-top:1px solid var(--line); padding:42px clamp(18px,5vw,70px); color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px; font-size:13px}
-    .fade{opacity:0; transform:translateY(18px); animation:rise .78s ease forwards}
-    @keyframes rise{to{opacity:1; transform:none}}
-    @media (max-width:900px){
-      .navlinks{display:none}
-      .hero{min-height:94svh; padding-top:86px}
-      .hero:before{background:linear-gradient(180deg,rgba(1,2,10,.30),rgba(1,2,10,.82) 66%,#01020a), url('assets/4tc_stage.png') center/cover no-repeat}
-      .hero-grid,.two,.three{grid-template-columns:1fr}
-      h1{font-size:clamp(82px,29vw,136px)}
-      .card{order:-1; padding:10px}
-      section{padding:56px 18px}
-      .song{align-items:flex-start}.cover{width:76px;height:76px;border-radius:18px}
-      .btn{width:100%; justify-content:center}
-      .cut,.member{grid-template-columns:1fr}
-    }
-  </style>
+  <title>AI ARTIST 4TC | REAR MUSIC LABEL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="nav">
-    <a class="brand" href="#top" aria-label="4TC top"><span class="mark"></span><span>REAR MUSIC LABEL</span></a>
-    <nav class="navlinks" aria-label="Main navigation">
-      <a href="#listen">LISTEN</a>
-      <a href="#concept">CONCEPT</a>
-      <a href="#visual">VISUAL</a>
-      <a href="#promo">PROMO</a>
-      <a href="#launch">LAUNCH</a>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="4TC official site top">
+      <span class="brand-mark">4TC</span>
+      <span class="brand-text">REAR MUSIC LABEL</span>
+    </a>
+    <nav class="nav" aria-label="main navigation">
+      <a href="#artist">Artist</a>
+      <a href="#voice">Voice</a>
+      <a href="#live">Live</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="nav-cta" href="#contact">Contact</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="fade">
-          <div class="eyebrow"><span class="pulse"></span> AI ARTIST OFFICIAL PROTOTYPE</div>
-          <h1 class="grad">4TC</h1>
-          <p class="sub">人工知能が、歌いはじめる。<br>福山初、AIアーティスト4TC起動。</p>
-          <p class="lead">4TCは、REAR MUSIC LABELから誕生する「喋れる・歌える・映像化できる」次世代AIアーティストプロジェクト。高く可愛いアニメキャラ的な声、ダークブルーの近未来ビジュアル、公式サイト・SNS・交通広告・ライブ演出をひとつに接続します。</p>
-          <div class="btns">
-            <a class="btn primary" href="#listen">▶ 音源を聴く</a>
-            <a class="btn" href="#launch">URL公開仕様を見る</a>
-          </div>
+    <section class="hero section">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="orb orb-a"></span>
+        <span class="orb orb-b"></span>
+        <span class="grid"></span>
+      </div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow">FUKUYAMA AI ARTIST PROJECT</p>
+        <h1>人工知能と<br />話せる、歌える、<br /><span>AIアーティスト 4TC</span></h1>
+        <p class="lead">福山から始まる、声・音楽・会話・ライブ体験をひとつにする次世代AIアーティストプロジェクト。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#voice">声デモを見る</a>
+          <a class="button ghost" href="#artist">プロジェクトを知る</a>
         </div>
-        <div class="card fade" style="animation-delay:.14s">
-          <img src="assets/4tc_keyvisual.jpg" alt="AIアーティスト4TC キービジュアル" />
+      </div>
+
+      <div class="hero-card reveal delay-1" aria-label="4TC concept card">
+        <div class="hologram">
+          <span class="ring ring-1"></span>
+          <span class="ring ring-2"></span>
+          <span class="ring ring-3"></span>
+          <div class="avatar">4TC</div>
         </div>
+        <div class="signal-row">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>VOICE / MUSIC / TALK / LIVE</p>
       </div>
     </section>
 
-    <section id="listen">
-      <div class="panel audio-panel">
-        <div class="audio-head">
-          <div class="song">
-            <img class="cover" src="assets/rear_logo.webp" alt="REAR MUSIC LABELロゴ" />
-            <div>
-              <h2>4TC Voice Demo</h2>
-              <p>AI ARTIST 4TC Prototype Sound / con01.mp3</p>
+    <section id="artist" class="section artist-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">ABOUT</p>
+        <h2>4TCは、地方都市から世界へ飛び出すAIアーティスト。</h2>
+      </div>
+      <div class="cards three">
+        <article class="card reveal">
+          <span class="card-no">01</span>
+          <h3>声でつながる</h3>
+          <p>高く可愛いアニメキャラクター的な声を軸に、会話・メッセージ・歌唱へ展開。</p>
+        </article>
+        <article class="card reveal delay-1">
+          <span class="card-no">02</span>
+          <h3>音楽で広がる</h3>
+          <p>福山テーマソング、SNSショート、ライブ演出まで、音楽レーベルとして育成。</p>
+        </article>
+        <article class="card reveal delay-2">
+          <span class="card-no">03</span>
+          <h3>街と連動する</h3>
+          <p>バスラッピング、タクシー広告、駅前ステージなど、街全体をプロモーション空間へ。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="voice" class="section voice-section">
+      <div class="player reveal">
+        <div>
+          <p class="eyebrow">VOICE DEMO</p>
+          <h2>“こんにちは、4TCです。”</h2>
+          <p>音源ファイルを <code>assets/4tc-demo.mp3</code> に追加すると、このエリアが公式ボイス／楽曲プレイヤーになります。</p>
+        </div>
+        <button class="play-button" id="demoButton" type="button" aria-label="demo visualizer start">
+          <span></span>
+        </button>
+        <div class="visualizer" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <audio id="voiceAudio" preload="metadata" src="assets/4tc-demo.mp3"></audio>
+      </div>
+    </section>
+
+    <section id="live" class="section live-section">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">LIVE CONCEPT</p>
+          <h2>スマートフォンが、4TCの小さなライブ会場になる。</h2>
+          <p class="body-text">音楽ファイル、声デモ、キャラクター演出、SNS導線を統合し、ファンがスマホで体験できる“ライブ型公式サイト”へ進化させます。</p>
+        </div>
+        <div class="live-panel reveal delay-1">
+          <div class="phone-frame">
+            <div class="phone-top"></div>
+            <div class="phone-screen">
+              <p>4TC LIVE MODE</p>
+              <strong>360° PHANTOM<br />SPEAKER</strong>
+              <span>COMING NEXT</span>
             </div>
           </div>
-          <div class="eyebrow"><span class="pulse"></span> OFFICIAL SOUND READY</div>
-        </div>
-        <audio controls preload="metadata" src="assets/4tc_voice_demo.mp3">このブラウザは音声再生に対応していません。</audio>
-        <div class="bars" aria-hidden="true">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </div>
-        <div class="grid three">
-          <div class="stat"><b>AI × MUSIC</b><span>歌う・喋る・会話するAIアーティスト展開。</span></div>
-          <div class="stat"><b>FUKUYAMA</b><span>福山発の話題化プロジェクトとして起動。</span></div>
-          <div class="stat"><b>URL READY</b><span>GitHub Pages / Netlifyで公開可能な完成版。</span></div>
         </div>
       </div>
     </section>
 
-    <section id="concept">
-      <div class="grid two">
-        <div>
-          <h2 class="title grad">AI ARTIST<br>4TC</h2>
-          <p class="copy">4TCは、ただのビジュアルではなく「声」「会話」「映像」「ライブ感」を持つ音楽IP。REAR MUSIC LABELのスタジオから起動し、公式サイト、ショート動画、バスラッピング広告、XRライブ演出まで拡張するブランドとして設計します。</p>
-          <p class="bigcopy">人工知能と喋れる、<br>次世代AIアーティスト。</p>
-          <div class="tagrow">
-            <span class="tag">AI TALK</span><span class="tag">VOICE DEMO</span><span class="tag">XR LIVE</span><span class="tag">SNS TEASER</span><span class="tag">BUS WRAP AD</span>
-          </div>
+    <section id="roadmap" class="section roadmap-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">ROADMAP</p>
+        <h2>100万円規模の初動から、全国ニュース級の展開へ。</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <span>STEP 1</span>
+          <h3>公式サイト公開</h3>
+          <p>4TCの世界観、声デモ、問い合わせ導線を整備。</p>
         </div>
-        <div class="panel logoBox">
-          <img src="assets/rear_logo.webp" alt="REAR Sound Behind You. Music Label" />
+        <div class="timeline-item reveal delay-1">
+          <span>STEP 2</span>
+          <h3>福山テーマソング</h3>
+          <p>ショート動画、SNS、街頭広告へ展開する代表曲を制作。</p>
+        </div>
+        <div class="timeline-item reveal delay-2">
+          <span>STEP 3</span>
+          <h3>交通広告連動</h3>
+          <p>バス・タクシー・駅前ビジュアルで認知を一気に獲得。</p>
+        </div>
+        <div class="timeline-item reveal delay-3">
+          <span>STEP 4</span>
+          <h3>ライブ／Prototype</h3>
+          <p>会話できるAIアーティストとして、スマホライブ体験を実装。</p>
         </div>
       </div>
     </section>
 
-    <section id="visual">
-      <h2 class="title">VISUAL SYSTEM</h2>
-      <p class="copy">ダークブルー、シルバー、ネオンピンク。4TCの世界観は、AI・音楽スタジオ・夜のステージをひとつにまとめた「近未来ガールズユニット」表現で統一します。</p>
-      <div class="grid two" style="margin-top:28px">
-        <div class="panel"><img src="assets/4tc_stage.png" alt="4TCステージビジュアル" /></div>
-        <div class="panel"><img src="assets/rear_studio.webp" alt="REARスタジオビジュアル" /></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="grid two">
-        <div class="panel">
-          <h2 style="margin:0 0 16px;font-size:36px;letter-spacing:-.05em">4TC Core System</h2>
-          <div class="memberlist">
-            <div class="member"><b>01</b><span><strong>Voice</strong><br>高く可愛い、アニメキャラ的な声のデモ。</span></div>
-            <div class="member"><b>02</b><span><strong>Visual</strong><br>ダークで近未来的な4人組AIアーティスト表現。</span></div>
-            <div class="member"><b>03</b><span><strong>Talk</strong><br>人工知能と喋れるキャラクター展開。</span></div>
-            <div class="member"><b>04</b><span><strong>Live</strong><br>スマホ、SNS、XRライブへ接続する音楽体験。</span></div>
-          </div>
-        </div>
-        <div>
-          <h2 class="title grad">4 TO<br>CONNECT</h2>
-          <p class="copy">4TCの意味付けは「4つの感情・4つの声・4つの接続」。AIが人間の感情に接続し、音楽として返してくる。ここをブランドの核にします。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="promo">
-      <div class="grid two">
-        <div>
-          <h2 class="title">30 SEC<br>PROMO</h2>
-          <p class="copy">公式サイト、SNS、福山バスラッピング広告で使える4TC初公開ティザー構成。音源のサビ感に合わせて「AI起動」から「デビュー予告」まで一気に見せます。</p>
-        </div>
-        <div class="panel">
-          <div class="timeline">
-            <div class="cut"><div class="time">0-3s</div><span>黒画面に青い光。「AI ARTIST 4TC 起動」</span></div>
-            <div class="cut"><div class="time">3-8s</div><span>REAR MUSIC LABELロゴ、スタジオ、福山の街へ接続。</span></div>
-            <div class="cut"><div class="time">8-15s</div><span>4人のシルエット登場。足元のネオンが走る。</span></div>
-            <div class="cut"><div class="time">15-23s</div><span>con01.mp3のサビ感に合わせて4TCが歌い始める。</span></div>
-            <div class="cut"><div class="time">23-28s</div><span>「人工知能と喋れるAIアーティスト」表示。</span></div>
-            <div class="cut"><div class="time">28-30s</div><span>REAR MUSIC LABEL / 4TC DEBUT COMING SOON。</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="launch">
-      <div class="panel cta">
-        <div class="eyebrow"><span class="pulse"></span> URL RELEASE PACKAGE</div>
-        <p class="bigcopy grad">4TC Official Site<br>公開準備完了。</p>
-        <p class="copy" style="margin-inline:auto">このフォルダをGitHub PagesまたはNetlifyにアップロードすると、そのまま4TC公式ホームページとしてURL公開できます。トップ画像、REARロゴ、スタジオ画像、4TC音源、スマホ対応デザイン、SNS共有用OG設定まで同梱済みです。</p>
-        <div class="btns" style="justify-content:center">
-          <a class="btn primary" href="#listen">▶ 4TC Voice Demo</a>
-          <a class="btn" href="https://suno.com/s/96Ocm0pheWI82cvI" target="_blank" rel="noopener">Suno Remix Link</a>
-        </div>
-      </div>
+    <section id="contact" class="section contact-section reveal">
+      <p class="eyebrow">CONTACT</p>
+      <h2>4TCへの出演・広告・制作相談はこちら。</h2>
+      <p>REAR MUSIC LABEL / AI ARTIST 4TC PROJECT</p>
+      <a class="button primary" href="mailto:rear.create.label@gmail.com?subject=AI%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B9%E3%83%884TC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">メールで問い合わせる</a>
     </section>
   </main>
 
   <footer class="footer">
-    <div>© REAR MUSIC LABEL / AI ARTIST 4TC</div>
-    <div>Sound Behind You. / 4TC Official URL Package</div>
+    <p>© 2026 REAR MUSIC LABEL / AI ARTIST 4TC</p>
+    <a href="#top">Back to top</a>
   </footer>
 
-  <script>
-    const audio = document.querySelector('audio');
-    const bars = document.querySelectorAll('.bar');
-    const setBars = state => bars.forEach(b => b.style.animationPlayState = state);
-    audio?.addEventListener('play', () => setBars('running'));
-    audio?.addEventListener('pause', () => setBars('paused'));
-    audio?.addEventListener('ended', () => setBars('paused'));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
