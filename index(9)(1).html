@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070816" />
+  <meta name="description" content="福山発・AIアーティスト 4TC 公式サイト。REAR MUSIC LABELによる、人工知能と話せる次世代アーティストプロジェクト。" />
+  <meta property="og:title" content="AI ARTIST 4TC OFFICIAL SITE" />
+  <meta property="og:description" content="福山発・AIアーティスト 4TC。声・音楽・会話・ライブ体験をつなぐ次世代プロジェクト。" />
+  <meta property="og:type" content="website" />
+  <title>AI ARTIST 4TC | REAR MUSIC LABEL</title>
+  <style>
+    :root {
+      --bg: #070816;
+      --panel: rgba(255, 255, 255, 0.08);
+      --text: #f6f7ff;
+      --muted: #aeb4d9;
+      --line: rgba(255,255,255,0.14);
+      --hot: #ff3df2;
+      --cyan: #2be7ff;
+      --gold: #ffd166;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(255, 61, 242, .24), transparent 32rem),
+        radial-gradient(circle at 82% 20%, rgba(43, 231, 255, .20), transparent 30rem),
+        linear-gradient(135deg, #050510 0%, #0b0b20 52%, #070816 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans JP", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      background: rgba(7,8,22,.72);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, var(--hot), var(--cyan));
+      color: white;
+      box-shadow: 0 0 30px rgba(255,61,242,.4);
+    }
+
+    .brand-text { font-size: .78rem; color: var(--muted); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .86rem;
+    }
+
+    .nav-cta {
+      padding: .65rem .95rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(5rem, 9vw, 8rem) clamp(1.1rem, 5vw, 5.6rem);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 6rem);
+      padding-top: 8rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, transparent, black 20%, black 70%, transparent);
+      opacity: .18;
+      transform: perspective(700px) rotateX(58deg) translateY(9rem);
+      z-index: -1;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--cyan);
+      font-weight: 900;
+      letter-spacing: .18em;
+      font-size: .78rem;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 1.4rem;
+      font-size: clamp(3.1rem, 8vw, 7.2rem);
+      line-height: .95;
+      letter-spacing: -.08em;
+    }
+    h1 span {
+      display: inline-block;
+      background: linear-gradient(90deg, #fff, var(--cyan), var(--hot), #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -.06em;
+    }
+
+    h3 { font-size: 1.45rem; }
+
+    .lead, .body-text {
+      max-width: 47rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.4rem;
+      padding: 0 1.35rem;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid var(--line);
+    }
+    .button.primary {
+      background: linear-gradient(135deg, var(--hot), var(--cyan));
+      box-shadow: 0 18px 44px rgba(43,231,255,.18);
+    }
+    .button.ghost { background: rgba(255,255,255,.08); }
+
+    .hero-card {
+      position: relative;
+      min-height: 36rem;
+      border: 1px solid var(--line);
+      border-radius: 2.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+      box-shadow: 0 28px 90px rgba(0,0,0,0.45);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .hologram {
+      position: relative;
+      width: min(72vw, 24rem);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+    .ring {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+    }
+    .ring-1 { inset: 9%; animation: pulse 2.2s infinite; }
+    .ring-2 { inset: 21%; animation: pulse 2.2s .35s infinite; }
+    .ring-3 { inset: 33%; animation: pulse 2.2s .7s infinite; }
+    .avatar {
+      width: 9rem;
+      height: 9rem;
+      display: grid;
+      place-items: center;
+      border-radius: 2rem;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.5), transparent 35%),
+        linear-gradient(135deg, var(--hot), var(--cyan));
+      font-size: 2.3rem;
+      font-weight: 900;
+      box-shadow: 0 0 70px rgba(43,231,255,.35);
+    }
+
+    .signal-row {
+      position: absolute;
+      bottom: 4.2rem;
+      display: flex;
+      gap: .5rem;
+    }
+    .signal-row span {
+      width: 2.4rem;
+      height: .35rem;
+      border-radius: 999px;
+      background: var(--cyan);
+      animation: signal 1.1s infinite ease-in-out;
+    }
+    .signal-row span:nth-child(2) { animation-delay: .1s; }
+    .signal-row span:nth-child(3) { animation-delay: .2s; }
+    .signal-row span:nth-child(4) { animation-delay: .3s; }
+    .signal-row span:nth-child(5) { animation-delay: .4s; }
+
+    .hero-card p {
+      position: absolute;
+      bottom: 1.7rem;
+      color: var(--muted);
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .section-head {
+      max-width: 62rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards.three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card, .player, .timeline-item, .contact-section, .live-panel {
+      border: 1px solid var(--line);
+      border-radius: 1.6rem;
+      background: var(--panel);
+      box-shadow: 0 18px 70px rgba(0,0,0,.22);
+      backdrop-filter: blur(16px);
+    }
+
+    .card {
+      min-height: 17rem;
+      padding: 1.6rem;
+    }
+    .card-no {
+      display: inline-flex;
+      margin-bottom: 2.5rem;
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+    .card p, .timeline-item p, .player p, .contact-section p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .player {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 2rem;
+      padding: clamp(1.3rem, 4vw, 3rem);
+      overflow: hidden;
+    }
+
+    .play-button {
+      width: 7rem;
+      height: 7rem;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--hot), var(--cyan));
+      box-shadow: 0 0 50px rgba(43,231,255,.28);
+      cursor: pointer;
+    }
+    .play-button span {
+      display: inline-block;
+      margin-left: .35rem;
+      width: 0;
+      height: 0;
+      border-top: 1.15rem solid transparent;
+      border-bottom: 1.15rem solid transparent;
+      border-left: 1.8rem solid white;
+    }
+    .play-button.is-playing span {
+      width: 1.7rem;
+      height: 2.2rem;
+      border: 0;
+      border-left: .55rem solid white;
+      border-right: .55rem solid white;
+    }
+
+    .visualizer {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: end;
+      gap: .6rem;
+      height: 5.2rem;
+    }
+    .visualizer i {
+      display: block;
+      width: 100%;
+      height: 18%;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--cyan), var(--hot));
+      transform-origin: bottom;
+      animation: bars 1s infinite ease-in-out paused;
+    }
+    .player.is-playing .visualizer i { animation-play-state: running; }
+    .visualizer i:nth-child(2) { animation-delay: .1s; }
+    .visualizer i:nth-child(3) { animation-delay: .2s; }
+    .visualizer i:nth-child(4) { animation-delay: .3s; }
+    .visualizer i:nth-child(5) { animation-delay: .4s; }
+    .visualizer i:nth-child(6) { animation-delay: .5s; }
+    .visualizer i:nth-child(7) { animation-delay: .6s; }
+    .visualizer i:nth-child(8) { animation-delay: .7s; }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(290px, .7fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .live-panel {
+      min-height: 35rem;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    .phone-frame {
+      width: min(78vw, 18rem);
+      height: 34rem;
+      border: 1px solid var(--line);
+      border-radius: 2.5rem;
+      padding: .8rem;
+      background: rgba(0,0,0,.34);
+      box-shadow: inset 0 0 20px rgba(255,255,255,.08), 0 25px 70px rgba(43,231,255,.12);
+    }
+
+    .phone-top {
+      width: 5rem;
+      height: .35rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.28);
+      margin: .2rem auto .8rem;
+    }
+
+    .phone-screen {
+      height: calc(100% - 1.5rem);
+      border-radius: 1.8rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.2rem;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255,61,242,.55), transparent 30%),
+        radial-gradient(circle at 50% 65%, rgba(43,231,255,.35), transparent 35%),
+        linear-gradient(160deg, #090a1d, #151242);
+    }
+    .phone-screen p, .phone-screen span {
+      margin: 0;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+    }
+    .phone-screen strong {
+      font-size: 1.65rem;
+      line-height: 1.15;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .timeline-item { padding: 1.4rem; }
+    .timeline-item span {
+      color: var(--cyan);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .contact-section {
+      text-align: center;
+      max-width: 62rem;
+      margin-inline: auto;
+      padding: clamp(2rem, 6vw, 4rem);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 2rem clamp(1.1rem, 5vw, 5.6rem);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(.95); opacity: .28; }
+      50% { transform: scale(1.05); opacity: .78; }
+    }
+    @keyframes signal {
+      0%, 100% { opacity: .22; transform: scaleY(.7); }
+      50% { opacity: 1; transform: scaleY(1.5); }
+    }
+    @keyframes bars {
+      0%, 100% { height: 18%; }
+      50% { height: 96%; }
+    }
+
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .hero, .split { grid-template-columns: 1fr; }
+      .hero-card { min-height: 29rem; }
+      .cards.three, .timeline { grid-template-columns: 1fr; }
+      .player { grid-template-columns: 1fr; }
+      .play-button { width: 6rem; height: 6rem; }
+      .footer { flex-direction: column; }
+    }
+
+    @media (max-width: 520px) {
+      .section { padding-inline: 1rem; }
+      .brand-text { display: none; }
+      h1 { font-size: 3.05rem; }
+      h2 { font-size: 2rem; }
+      .hero-card { min-height: 25rem; border-radius: 1.5rem; }
+      .avatar { width: 7.6rem; height: 7.6rem; border-radius: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark">4TC</span>
+      <span class="brand-text">REAR MUSIC LABEL</span>
+    </a>
+    <nav class="nav">
+      <a href="#artist">Artist</a>
+      <a href="#voice">Voice</a>
+      <a href="#live">Live</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">FUKUYAMA AI ARTIST PROJECT</p>
+        <h1>人工知能と<br />話せる、歌える、<br /><span>AIアーティスト 4TC</span></h1>
+        <p class="lead">福山から始まる、声・音楽・会話・ライブ体験をひとつにする次世代AIアーティストプロジェクト。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#voice">声デモを見る</a>
+          <a class="button ghost" href="#artist">プロジェクトを知る</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal delay-1">
+        <div class="hologram">
+          <span class="ring ring-1"></span>
+          <span class="ring ring-2"></span>
+          <span class="ring ring-3"></span>
+          <div class="avatar">4TC</div>
+        </div>
+        <div class="signal-row">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>VOICE / MUSIC / TALK / LIVE</p>
+      </div>
+    </section>
+
+    <section id="artist" class="section artist-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">ABOUT</p>
+        <h2>4TCは、地方都市から世界へ飛び出すAIアーティスト。</h2>
+      </div>
+      <div class="cards three">
+        <article class="card reveal">
+          <span class="card-no">01</span>
+          <h3>声でつながる</h3>
+          <p>高く可愛いアニメキャラクター的な声を軸に、会話・メッセージ・歌唱へ展開。</p>
+        </article>
+        <article class="card reveal delay-1">
+          <span class="card-no">02</span>
+          <h3>音楽で広がる</h3>
+          <p>福山テーマソング、SNSショート、ライブ演出まで、音楽レーベルとして育成。</p>
+        </article>
+        <article class="card reveal delay-2">
+          <span class="card-no">03</span>
+          <h3>街と連動する</h3>
+          <p>バスラッピング、タクシー広告、駅前ステージなど、街全体をプロモーション空間へ。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="voice" class="section voice-section">
+      <div class="player reveal">
+        <div>
+          <p class="eyebrow">VOICE DEMO</p>
+          <h2>“こんにちは、4TCです。”</h2>
+          <p>このボタンを押すと、4TC公式ボイスデモ風のビジュアライザーが起動します。次の段階で音源MP3を追加できます。</p>
+        </div>
+        <button class="play-button" id="demoButton" type="button" aria-label="demo visualizer start">
+          <span></span>
+        </button>
+        <div class="visualizer" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </section>
+
+    <section id="live" class="section live-section">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">LIVE CONCEPT</p>
+          <h2>スマートフォンが、4TCの小さなライブ会場になる。</h2>
+          <p class="body-text">音楽ファイル、声デモ、キャラクター演出、SNS導線を統合し、ファンがスマホで体験できる“ライブ型公式サイト”へ進化させます。</p>
+        </div>
+        <div class="live-panel reveal delay-1">
+          <div class="phone-frame">
+            <div class="phone-top"></div>
+            <div class="phone-screen">
+              <p>4TC LIVE MODE</p>
+              <strong>360° PHANTOM<br />SPEAKER</strong>
+              <span>COMING NEXT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section roadmap-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">ROADMAP</p>
+        <h2>100万円規模の初動から、全国ニュース級の展開へ。</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <span>STEP 1</span>
+          <h3>公式サイト公開</h3>
+          <p>4TCの世界観、声デモ、問い合わせ導線を整備。</p>
+        </div>
+        <div class="timeline-item reveal delay-1">
+          <span>STEP 2</span>
+          <h3>福山テーマソング</h3>
+          <p>ショート動画、SNS、街頭広告へ展開する代表曲を制作。</p>
+        </div>
+        <div class="timeline-item reveal delay-2">
+          <span>STEP 3</span>
+          <h3>交通広告連動</h3>
+          <p>バス・タクシー・駅前ビジュアルで認知を一気に獲得。</p>
+        </div>
+        <div class="timeline-item reveal delay-3">
+          <span>STEP 4</span>
+          <h3>ライブ／Prototype</h3>
+          <p>会話できるAIアーティストとして、スマホライブ体験を実装。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section reveal">
+      <p class="eyebrow">CONTACT</p>
+      <h2>4TCへの出演・広告・制作相談はこちら。</h2>
+      <p>REAR MUSIC LABEL / AI ARTIST 4TC PROJECT</p>
+      <a class="button primary" href="mailto:rear.create.label@gmail.com?subject=AI%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B9%E3%83%884TC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">メールで問い合わせる</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 REAR MUSIC LABEL / AI ARTIST 4TC</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script>
+    const revealTargets = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach((target) => observer.observe(target));
+
+    const demoButton = document.getElementById("demoButton");
+    const player = document.querySelector(".player");
+    demoButton?.addEventListener("click", () => {
+      player.classList.toggle("is-playing");
+      demoButton.classList.toggle("is-playing");
+    });
+  </script>
+</body>
+</html>
